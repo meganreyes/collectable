@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import firebase from "./firebase";
+import firebase from "../firebase";
 const ListsDiv = styled.div`
   width: 40%;
   height: 100%;
