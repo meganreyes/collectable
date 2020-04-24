@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <h2>Collectable</h2>
-      <AddCategory />
+      {/* <AddCategory /> */}
       <AddItem />
       <h3>My Collection: </h3>
       <ItemList />

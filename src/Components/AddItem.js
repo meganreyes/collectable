@@ -15,6 +15,12 @@ const InputName = styled.input`
   margin-bottom: 10px;
   border-radius: 3px;
 `;
+const InputCollection = styled.input`
+  padding: 0.5em;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 3px;
+`;
 
 const InputDescription = styled.textarea`
   -webkit-appearance: none;
@@ -50,13 +56,16 @@ const Button = styled.div``;
 const AddItem = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [collection, setCollection] = useState("");
   const addItem = () => {
     firebase.firestore().collection("items").add({
       name,
       description,
+      collection,
     });
     setName("");
     setDescription("");
+    setCollection("");
   };
   return (
     <form id="addItemForm">
@@ -73,6 +82,11 @@ const AddItem = () => {
           placeholder="About this item"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+        />
+        <InputCollection
+          placeholder="Add to which collection?"
+          value={collection}
+          onChange={(e) => setCollection(e.target.value)}
         />
         <Button id="submitButton" onClick={addItem}>
           Add To My Collection!
