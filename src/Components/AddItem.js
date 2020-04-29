@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import firebase from "../firebase";
+import AddImage from "./AddImage";
+
 import "../CSS/AddItem.css";
 const AddItemDiv = styled.div`
   display: flex;
@@ -15,6 +17,13 @@ const InputName = styled.input`
   margin-bottom: 10px;
   border-radius: 3px;
 `;
+const InputImage = styled.input`
+  padding: 0.5em;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 3px;
+`;
+
 const InputCollection = styled.input`
   padding: 0.5em;
   border: none;
@@ -53,24 +62,28 @@ const InputDescription = styled.textarea`
 
 const Button = styled.div``;
 
+
 const AddItem = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [collection, setCollection] = useState("");
+  const [image, setImage] = useState('http://via.placeholder.com/400x300');
+  
   const addItem = () => {
     firebase.firestore().collection("items").add({
       name,
       description,
       collection,
+      image,
     });
     setName("");
     setDescription("");
     setCollection("");
+    setImage("")
   };
   return (
     <form id="addItemForm">
       <h1 id="headerGroup">New Item!</h1>
-      <h5>+ ADD PHOTO</h5>
       <AddItemDiv>
         <InputName
           id="nameInput"

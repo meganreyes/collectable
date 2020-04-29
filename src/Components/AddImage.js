@@ -43,20 +43,30 @@ class ImageUpload extends Component {
   }
   render() {
     const style = {
-      height: '500px',
-      display: 'flex',
-      flexDirection: 'column',
+      display: 'center',
+      verticalalign: 'middle',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
     };
+    const inputStyle = {
+      maxWidth:'30%',
+    }
+    const uploadStyle = {
+
+    }
     return (
       <div style={style}>
+        
+        Upload an Image
+      <br/>
+      
+        <input style = {inputStyle} type="file" onChange={this.handleChange}/>
+      <br/>
+        <button style = {uploadStyle} onClick={this.handleUpload}>Upload</button>
+      <br/>
       <progress value={this.state.progress} max="100"/>
       <br/>
-        <input type="file" onChange={this.handleChange}/>
-        <button onClick={this.handleUpload}>Upload</button>
-        <br/>
-        <img src={this.state.url || 'http://via.placeholder.com/400x300'} alt="Uploaded images" height="300" width="400"/>
+      <img src={this.state.url || 'http://via.placeholder.com/400x300'} alt="Uploaded images" height="300" width="400"/>
       </div>
     )
   }
