@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import firebase from "../firebase";
+import AddImage from "./AddImage";
+
 import "../CSS/AddItem.css";
 const AddItemDiv = styled.div`
   display: flex;
@@ -10,6 +12,19 @@ const AddItemDiv = styled.div`
   padding: 5px;
 `;
 const InputName = styled.input`
+  padding: 0.5em;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 3px;
+`;
+const InputImage = styled.input`
+  padding: 0.5em;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 3px;
+`;
+
+const InputCollection = styled.input`
   padding: 0.5em;
   border: none;
   margin-bottom: 10px;
@@ -47,21 +62,28 @@ const InputDescription = styled.textarea`
 
 const Button = styled.div``;
 
+
 const AddItem = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [collection, setCollection] = useState("");
+  const [image, setImage] = useState('http://via.placeholder.com/400x300');
+  
   const addItem = () => {
     firebase.firestore().collection("items").add({
       name,
       description,
+      collection,
+      image,
     });
     setName("");
     setDescription("");
+    setCollection("");
+    setImage("")
   };
   return (
     <form id="addItemForm">
       <h1 id="headerGroup">New Item!</h1>
-      <h5>+ ADD PHOTO</h5>
       <AddItemDiv>
         <InputName
           id="nameInput"
@@ -73,6 +95,11 @@ const AddItem = () => {
           placeholder="About this item"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+        />
+        <InputCollection
+          placeholder="Add to which collection?"
+          value={collection}
+          onChange={(e) => setCollection(e.target.value)}
         />
         <Button id="submitButton" onClick={addItem}>
           Add To My Collection!

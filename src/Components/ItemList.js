@@ -65,6 +65,10 @@ const ItemList = () => {
           <ListItemDiv>
             <ListTitleDiv>{list.name}</ListTitleDiv>
             <ListItemDetailDiv>{list.description}</ListItemDetailDiv>
+            <ListItemDetailDiv>
+              <img src = {list.image}/>
+            </ListItemDetailDiv>
+            <ListItemDetailDiv>{list.collection}</ListItemDetailDiv>
             <ListItemDeleteButton onClick={() => handleOnDelete(list.id)} />
           </ListItemDiv>
         );
