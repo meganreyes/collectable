@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { storage } from "../firebase";
 import placeholder from "../Images/placeholder.svg";
+
+let imageURL = "";
 class ImageUpload extends Component {
   constructor(props) {
     super(props);
@@ -44,11 +46,14 @@ class ImageUpload extends Component {
           .then((url) => {
             console.log(url);
             this.setState({ url });
+
           });
       }
     );
   };
   render() {
+    imageURL = String(this.state.url);
+    console.log(imageURL);
     const style = {
       display: "center",
       verticalalign: "middle",
@@ -90,4 +95,4 @@ class ImageUpload extends Component {
   }
 }
 
-export default ImageUpload;
+export {imageURL, ImageUpload as default};

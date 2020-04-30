@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import firebase from "../firebase";
 import AddImage from "./AddImage";
+import {imageURL}from "./AddImage";
 
 import "../CSS/AddItem.css";
 const AddItemDiv = styled.div`
@@ -67,7 +68,7 @@ const AddItem = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [collection, setCollection] = useState("");
-  const [image, setImage] = useState("http://via.placeholder.com/400x300");
+  const [image, setImage] = useState("");
 
   const addItem = () => {
     firebase.firestore().collection("items").add({
@@ -79,7 +80,7 @@ const AddItem = () => {
     setName("");
     setDescription("");
     setCollection("");
-    setImage("");
+    setImage(imageURL);
   };
   return (
     <form id="addItemForm" style={contentStyle}>
@@ -92,7 +93,8 @@ const AddItem = () => {
           autoComplete="off"
           onChange={(e) => setName(e.target.value)}
         />
-        <AddImage />
+        <AddImage
+        />
         <div className="rectangle" />
         <InputDescription
           placeholder="About this item"
@@ -100,7 +102,6 @@ const AddItem = () => {
           autoComplete="off"
           onChange={(e) => setDescription(e.target.value)}
         />
-
         <InputCollection
           placeholder="Add to which collection?"
           autoComplete="off"
