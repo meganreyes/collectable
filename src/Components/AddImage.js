@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { storage } from "../firebase";
-
+import placeholder from "../Images/placeholder.svg";
 class ImageUpload extends Component {
   constructor(props) {
     super(props);
@@ -80,7 +80,7 @@ class ImageUpload extends Component {
         <br />
         <img
           id="image"
-          src={this.state.url || "http://via.placeholder.com/400x300"}
+          src={this.state.url || placeholder}
           alt="Uploaded images"
           width="30%"
           height="auto"

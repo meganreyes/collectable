@@ -89,6 +89,7 @@ const AddItem = () => {
           id="nameInput"
           value={name}
           placeholder="Item Name"
+          autoComplete="off"
           onChange={(e) => setName(e.target.value)}
         />
         <AddImage />
@@ -96,11 +97,13 @@ const AddItem = () => {
         <InputDescription
           placeholder="About this item"
           value={description}
+          autoComplete="off"
           onChange={(e) => setDescription(e.target.value)}
         />
 
         <InputCollection
           placeholder="Add to which collection?"
+          autoComplete="off"
           value={collection}
           onChange={(e) => setCollection(e.target.value)}
         />
