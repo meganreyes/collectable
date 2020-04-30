@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import firebase from "../firebase";
+import "../CSS/ItemList.css";
 const ListsDiv = styled.div`
-  width: 40%;
-  height: 100%;
-  background: #dedede;
-  margin: 30px auto;
+  width: 60%;
+  height: auto;
   padding: 20px;
+  position: relative;
+  margin-left: 230px;
+  margin-right: 50px;
 `;
 const ListItemDiv = styled.div`
   background: #b2c4db;
   border-radius: 5px;
+  width: 150%;
   position: relative;
 `;
 const ListTitleDiv = styled.div`
@@ -19,11 +22,12 @@ const ListTitleDiv = styled.div`
   font-weight: bold;
   margin: 3px;
 `;
+
 const ListItemDetailDiv = styled.p`
   font-size: 18px;
   color: black;
   margin: 3px;
-  max-height: 80px;
+
   overflow: auto;
 `;
 const ListItemDeleteButton = styled.button`
@@ -37,6 +41,10 @@ const ListItemDeleteButton = styled.button`
   right: 10px;
   outline: none;
 `;
+
+const contentStyle = {
+  marginTop: "40px",
+};
 function useLists() {
   const [lists, setLists] = useState([]);
   useEffect(() => {
@@ -59,16 +67,27 @@ const ItemList = () => {
     firebase.firestore().collection("items").doc(id).delete();
   };
   return (
-    <ListsDiv>
+    <ListsDiv style={contentStyle}>
       {lists.map((list) => {
         return (
-          <ListItemDiv>
-            <ListTitleDiv>{list.name}</ListTitleDiv>
-            <ListItemDetailDiv>{list.description}</ListItemDetailDiv>
-            <ListItemDetailDiv>
-              <img src = {list.image}/>
+          <ListItemDiv id="ListItem">
+            <ListItemDetailDiv id="CollectionName">
+              {list.collection}
             </ListItemDetailDiv>
-            <ListItemDetailDiv>{list.collection}</ListItemDetailDiv>
+            <ListTitleDiv id="ListItemHeaderGroup">{list.name} </ListTitleDiv>
+            <ListItemDetailDiv>
+              <img
+                id="ListImage"
+                src={list.image}
+                style={{
+                  margin: "3px",
+                  width: "50%",
+                  height: "auto",
+                }}
+              />
+            </ListItemDetailDiv>
+            <ListItemDetailDiv id="about">{list.description}</ListItemDetailDiv>
+
             <ListItemDeleteButton onClick={() => handleOnDelete(list.id)} />
           </ListItemDiv>
         );

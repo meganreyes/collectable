@@ -42,8 +42,6 @@ const InputDescription = styled.textarea`
   /* width: 95%; */
   max-width: 95%;
   min-width: 95%;
-  height: 110px;
-  max-height: 110px;
   visibility: visible !important;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -60,15 +58,17 @@ const InputDescription = styled.textarea`
   -ms-transition: all 0.3s ease-in-out;
 `;
 
+const contentStyle = {
+  marginTop: "62px",
+};
 const Button = styled.div``;
-
 
 const AddItem = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [collection, setCollection] = useState("");
-  const [image, setImage] = useState('http://via.placeholder.com/400x300');
-  
+  const [image, setImage] = useState("http://via.placeholder.com/400x300");
+
   const addItem = () => {
     firebase.firestore().collection("items").add({
       name,
@@ -79,11 +79,11 @@ const AddItem = () => {
     setName("");
     setDescription("");
     setCollection("");
-    setImage("")
+    setImage("");
   };
   return (
-    <form id="addItemForm">
-      <h1 id="headerGroup">New Item!</h1>
+    <form id="addItemForm" style={contentStyle}>
+      <h1 id="headerGroup">Add Item:</h1>
       <AddItemDiv>
         <InputName
           id="nameInput"
@@ -91,11 +91,14 @@ const AddItem = () => {
           placeholder="Item Name"
           onChange={(e) => setName(e.target.value)}
         />
+        <AddImage />
+        <div className="rectangle" />
         <InputDescription
           placeholder="About this item"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+
         <InputCollection
           placeholder="Add to which collection?"
           value={collection}

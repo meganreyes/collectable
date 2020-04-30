@@ -1,74 +1,92 @@
-import React, {Component} from 'react';
-import {storage} from '../firebase';
+import React, { Component } from "react";
+import { storage } from "../firebase";
 
 class ImageUpload extends Component {
   constructor(props) {
     super(props);
     this.state = {
       image: null,
-      url: '',
-      progress: 0
-    }
-    this.handleChange = this
-      .handleChange
-      .bind(this);
-      this.handleUpload = this.handleUpload.bind(this);
+      url: "",
+      progress: 0,
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
   }
-  handleChange = e => {
+  handleChange = (e) => {
     if (e.target.files[0]) {
       const image = e.target.files[0];
-      this.setState(() => ({image}));
+      this.setState(() => ({ image }));
     }
-  }
-  handleUpload = () => {
-      const {image} = this.state;
-      const uploadTask = storage.ref(`images/${image.name}`).put(image);
-      uploadTask.on('state_changed', 
+  };
+  handleUpload = (e) => {
+    e.preventDefault();
+    const { image } = this.state;
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
       (snapshot) => {
         // progrss function ....
-        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-        this.setState({progress});
-      }, 
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        this.setState({ progress });
+      },
       (error) => {
-           // error function ....
+        // error function ....
         console.log(error);
-      }, 
-    () => {
+      },
+      () => {
         // complete function ....
-        storage.ref('images').child(image.name).getDownloadURL().then(url => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
             console.log(url);
-            this.setState({url});
-        })
-    });
-  }
+            this.setState({ url });
+          });
+      }
+    );
+  };
   render() {
     const style = {
-      display: 'center',
-      verticalalign: 'middle',
-      alignItems: 'center',
-      justifyContent: 'center',
+      display: "center",
+      verticalalign: "middle",
+      alignItems: "center",
+      justifyContent: "center",
     };
     const inputStyle = {
-      maxWidth:'30%',
-    }
-    const uploadStyle = {
-
-    }
+      maxWidth: "100%",
+    };
+    const uploadStyle = {};
     return (
-      <div style={style}>
-        
-        Upload an Image
-      <br/>
-      
-        <input style = {inputStyle} type="file" onChange={this.handleChange}/>
-      <br/>
-        <button style = {uploadStyle} onClick={this.handleUpload}>Upload</button>
-      <br/>
-      <progress value={this.state.progress} max="100"/>
-      <br/>
-      <img src={this.state.url || 'http://via.placeholder.com/400x300'} alt="Uploaded images" height="300" width="400"/>
+      <div id="addImageHeader" style={style}>
+        Add an image:
+        <br />
+        <div class="wrapper">
+          <input
+            id="file"
+            style={inputStyle}
+            type="file"
+            onChange={this.handleChange}
+          />
+          <br />
+          <button id="upload" style={uploadStyle} onClick={this.handleUpload}>
+            Click To Upload
+          </button>
+        </div>
+        <br />
+        <progress id="progress" value={this.state.progress} max="100" />
+        <br />
+        <img
+          id="image"
+          src={this.state.url || "http://via.placeholder.com/400x300"}
+          alt="Uploaded images"
+          width="30%"
+          height="auto"
+        />
       </div>
-    )
+    );
   }
 }
 

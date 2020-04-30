@@ -1,28 +1,61 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela&display=swap");
+@import url("https://awv3node-homepage.surge.sh/build/assets/stars.svg");
+
+@font-face {
+  font-family: "proxima_nova_rgregular";
+  src: url("https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot");
+  src: url("https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://litmus.com/fonts/Emails/proximanova-regular-webfont.woff")
+      format("woff"),
+    url("https://litmus.com/fonts/Emails/proximanova-regular-webfont.ttf")
+      format("truetype"),
+    url("https://litmus.com/fonts/Emails/proximanova-regular-webfont.svg#proxima_nova_rgregular")
+      format("svg");
+  font-weight: bolder;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "proxima_nova_rgbold";
+  src: url("https://litmus.com/fonts/Emails/proximanova-bold-webfont.eot");
+  src: url("https://litmus.com/fonts/Emails/proximanova-bold-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://litmus.com/fonts/Emails/proximanova-bold-webfont.woff")
+      format("woff"),
+    url("https://litmus.com/fonts/Emails/proximanova-bold-webfont.ttf")
+      format("truetype"),
+    url("https://litmus.com/fonts/Emails/proximanova-bold-webfont.svg#proxima_nova_rgbold")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   background-size: cover;
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  /* background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%); */
+  background-color: #fff4e4 !important;
   /* background-color: #edf0f5 !important; */
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: "Varela", sans-serif;
+  font-family: "proxima_nova_rgregular";
 }
 
 #addItemForm {
   vertical-align: middle;
-  min-width: 250px;
-  max-width: 400px;
+  width: 300px;
   padding: 0px 20px 10px 20px;
-  margin-left: auto;
+  margin-left: -160px;
   margin-right: auto;
   margin-bottom: 20px;
-  height: 10%;
+  height: auto;
   border-radius: 10px;
 
   align-items: center;
+
   background-color: #f8f9fc !important;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.01);
 }
 
 input::placeholder,
@@ -31,7 +64,7 @@ textarea::placeholder {
   -moz-appearance: none;
   appearance: none;
   color: #8c98a8;
-  font-size: 1.3em;
+  font-size: 1em;
   border-radius: 0px;
   width: 70%;
 }
@@ -44,7 +77,7 @@ textarea:focus::placeholder {
   -moz-appearance: none;
   appearance: none;
   color: #0a0d13;
-  font-size: 1.3em;
+  font-size: 1em;
   border-radius: 0px;
 }
 
@@ -57,11 +90,14 @@ textarea:focus:focus::placeholder {
   border-radius: 0px;
 }
 
-input:not([type="checkbox"]) {
+input:not([type="checkbox"]),
+#addImageHeader {
+  letter-spacing: -0.05vmax;
+  text-align: left;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  font-family: "varela", sans-serif;
+  font-family: "proxima_nova_rgregular";
   font-size: 0.875em;
   width: 93%;
   max-width: 195%;
@@ -76,7 +112,6 @@ input:not([type="checkbox"]) {
   color: #565c73;
 
   border: solid 1px #a0acbd;
-  border-bottom: none;
 
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -93,6 +128,7 @@ input:focus {
   color: #0a0d13;
 }
 textarea {
+  letter-spacing: -0.05vmax;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -100,23 +136,21 @@ textarea {
   padding-left: 10px;
   padding-right: 2.5px;
   margin-left: 0px;
+  height: 30px;
   /* width: 95%; */
   max-width: 95%;
   min-width: 95%;
-  height: 110px;
-  max-height: 110px;
+
   visibility: visible !important;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   resize: none;
   background: transparent;
   outline: none;
-
+  border: none !important;
   color: #565c73;
-  font-family: "Varela", sans-serif;
+  font-family: "proxima_nova_rgregular";
   font-size: 0.875em;
-
-  border: solid 1px #a0acbd;
 
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -134,7 +168,7 @@ textarea:focus {
 }
 #nameInput {
   border: solid 1px #a0acbd;
-  margin-top: 10px;
+  margin-top: -20px;
   border-radius: 0px;
 
   margin-bottom: 15px;
@@ -142,12 +176,12 @@ textarea:focus {
   padding-top: 10px;
   padding-bottom: 5px;
 
-  height: 0.875em;
+  height: 0.5em;
   border-top: none;
   border-left: none;
   border-right: none;
-  font-family: "Varela", sans-serif;
-  font-size: large;
+  font-family: "proxima_nova_rgregular";
+  font-size: medium;
   overflow: auto;
   resize: none;
 }
@@ -162,12 +196,12 @@ h5 {
 }
 
 #headerGroup {
+  letter-spacing: -0.05vmax;
   font-size: 1.5em;
   text-align: center;
-  letter-spacing: 4px;
   color: white;
-  text-shadow: 2px 2px 4px #00000020;
-  font-family: "Lato", sans-serif;
+
+  font-family: "proxima_nova_rgregular";
   margin-left: -20px;
   margin-right: auto;
   margin-top: 20px;
@@ -177,29 +211,30 @@ h5 {
   min-width: 250px;
   max-width: 400px;
   align-items: center;
-  width: 110%;
+  width: 300px;
   padding: 15px 20px 10px 20px;
   /* border: solid 1px transparent; */
   border-top: none;
   border-bottom: none;
   /* background-color: #3d2f9d; */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.01);
+
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
 }
 
 #headerText {
+  letter-spacing: -0.05vmax;
   position: relative;
   font-size: 1.5em;
   text-align: center;
   letter-spacing: 4px;
   color: white;
   text-shadow: 2px 2px 4px #00000020;
-  font-family: "Lato", sans-serif;
+  font-family: "proxima_nova_rgregular";
   border-radius: 0px;
 }
 
 #submitButton {
-  font-family: "varela", sans-serif;
+  font-family: "proxima_nova_rgregular";
   font-size: large;
   font-weight: 1000;
   color: #b3aca7;
@@ -234,4 +269,166 @@ h5 {
   background-image: linear-gradient(-60deg, #66a6ff, #66ebf5) !important;
   border: 5px solid #66ebf5;
   transition: all 0.4s ease 0s;
+}
+
+#WelcomeHeader {
+  margin-top: 200px;
+  font-family: "proxima_nova_rgbold";
+  font-size: 7vmax;
+  letter-spacing: -0.35vmax;
+  line-height: 0.8em;
+  margin-bottom: 0;
+  color: Black;
+}
+
+#WelcomeSubHeader1 {
+  font-size: 2vmax;
+  font-family: "proxima_nova_rgregular";
+  letter-spacing: -0.05vmax;
+  font-weight: bolder;
+  max-width: 100%;
+  min-width: 50%;
+  color: #0091ad;
+}
+
+#WelcomeMessage {
+  position: -webkit-sticky; /* Safari */
+
+  position: sticky;
+  z-index: 3;
+}
+
+#start {
+  letter-spacing: -0.05vmax;
+  font-family: "proxima_nova_rgbold", Varela, sans-serif;
+  font-size: 2vmax;
+  font-weight: bolder;
+
+  text-shadow: 2px 2px 4px #0000000d;
+  outline: none;
+  cursor: pointer;
+  padding-left: 5vmax;
+  padding-right: 5vmax;
+  padding-top: 2vmax;
+  padding-bottom: 2vmax;
+  border-radius: 60px;
+  text-decoration: none;
+  border-top: none;
+  background-color: #f6d365;
+  color: #fff4e4 !important;
+  border: 3px solid #f6d365;
+  margin: 1vmax;
+  display: inline-block;
+}
+
+#start:hover {
+  background: #ff57bb;
+  border: 3px solid #ff57bb;
+  color: white !important;
+}
+
+#file {
+  border: none;
+}
+
+#progress {
+  margin-top: -70px;
+  width: 275px;
+}
+
+#upload {
+  margin-bottom: -60px;
+  align-self: center;
+  width: 275px;
+  letter-spacing: -0.01vmax;
+  font-family: "proxima_nova_rgbold", Varela, sans-serif;
+
+  font-weight: bolder;
+  font-size: 14px;
+  text-shadow: 2px 2px 4px #0000000d;
+  outline: none;
+  cursor: pointer;
+  padding-left: 5vmax;
+  padding-right: 5vmax;
+  padding-top: 0.5vmax;
+  padding-bottom: 0.5vmax;
+  border-radius: 60px;
+  text-decoration: none;
+  border-top: none;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  border: 0.125px solid transparent;
+  color: white !important;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.08);
+  display: inline-block;
+}
+
+#upload:hover {
+  background-image: linear-gradient(120deg, #fda085 0%, #f6d365 100%);
+}
+#image {
+  margin-top: -2px;
+  margin-left: 100px;
+  margin-right: auto;
+}
+
+.rectangle {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: "proxima_nova_rgregular", Varela, sans-serif;
+  font-size: 0.875em;
+  width: 93%;
+  max-width: 195%;
+  height: 25px;
+  padding-left: 10px;
+  padding: 10px;
+  border-radius: 0px;
+  /* padding: 0px 0px 0px 15px; */
+  margin-top: -1px;
+  margin-bottom: -34.5px;
+  background: transparent;
+  outline: none;
+  color: #565c73;
+
+  border: solid 1px #a0acbd;
+  /* border-bottom: none; */
+
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  visibility: visible !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
+#CollectionName {
+  text-align: left;
+  padding: 15px;
+  color: #6efafb;
+}
+
+#ListItemHeaderGroup {
+  margin-top: -12px;
+  border-top: 1px solid #05b1d3;
+  padding-top: 5px;
+  color: white;
+}
+
+#about {
+  text-align: left;
+  padding: 15px;
+  color: #fff4e4;
+}
+
+#ListItem {
+  background-color: #0091ad;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.09), 0 6px 20px 0 rgba(0, 0, 0, 0.01);
+}
+
+#ListImage {
+  border-radius: 10px;
+  border: 5px solid #05b1d3;
 }
