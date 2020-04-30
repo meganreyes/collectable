@@ -68,7 +68,8 @@ const AddItem = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [collection, setCollection] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(imageURL);
+  
 
   const addItem = () => {
     firebase.firestore().collection("items").add({
@@ -93,7 +94,7 @@ const AddItem = () => {
           autoComplete="off"
           onChange={(e) => setName(e.target.value)}
         />
-        <AddImage
+        <AddImage 
         />
         <div className="rectangle" />
         <InputDescription
