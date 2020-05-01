@@ -42,6 +42,7 @@ const ListItemDeleteButton = styled.button`
   outline: none;
 `;
 
+
 const contentStyle = {
   marginTop: "40px",
 };
@@ -61,7 +62,7 @@ function useLists() {
   }, []);
   return lists;
 }
-const ItemList = () => {
+const ItemList = ({sorted}) => {
   const lists = useLists();
   const handleOnDelete = (id) => {
     firebase.firestore().collection("items").doc(id).delete();
@@ -69,6 +70,7 @@ const ItemList = () => {
   return (
     <ListsDiv style={contentStyle}>
       {lists.map((list) => {
+        if(list.collection.includes(sorted)) {
         return (
           <ListItemDiv id="ListItem">
             <ListItemDetailDiv id="CollectionName">
@@ -91,6 +93,7 @@ const ItemList = () => {
             <ListItemDeleteButton onClick={() => handleOnDelete(list.id)} />
           </ListItemDiv>
         );
+      }
       })}
     </ListsDiv>
   );
